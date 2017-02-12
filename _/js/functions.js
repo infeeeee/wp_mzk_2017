@@ -192,6 +192,7 @@
 			}
 			var arw = (cww - (5 * (colNum - 1))) / colNum
 			$(selector + ' ' + wrapper + " article").css("width", arw);
+			console.log('wrapper width:' + cww + ' col width:' + arw);
 		}
 
 
