@@ -166,7 +166,8 @@
 		}//asztali vége
 
 
-		function multiCol(selector,wrapper) {
+		//többoszloposság beállítása
+		function multiCol(selector, wrapper) {
 			var cww = $(wrapper).width();
 			var an = 0;
 			var colNum;
@@ -194,40 +195,14 @@
 		}
 
 
-		if (pw >= 480 && postList) { 
+		if (pw >= 480 && postList) {
 			multiCol(".home", "#contentWrapper");
 			multiCol(".archive", "#contentWrapper");
 		}
-		if (pw >=480 && !postList) {
+		if (pw >= 480 && !postList) {
 			multiCol('.single', '.relatedWrapper')
 		}
-		//többoszloposság beállítása
-		// if (pw >= 480 && postList) {
-		// 	var cww = $("#contentWrapper").width();
-		// 	var an = 0;
-		// 	var colNum;
 
-		// 	if (pw < 768) {
-		// 		colNum = 2;
-		// 	} else if (pw >= 768) {
-		// 		colNum = 4;
-
-		// 		$("article").each(function () {
-		// 			an++;
-		// 		})
-
-		// 		var anm = an / 4 - Math.floor(an / 4)
-		// 		var dn = 4 - (anm / 0.25)
-
-		// 		if (dn > 0) {
-		// 			for (var i = 0; i < dn; i++) {
-		// 				$("#contentWrapper").append('<article class="dummy"></article>')
-		// 			}
-		// 		}
-		// 	}
-		// 	var arw = (cww - (5 * (colNum - 1))) / colNum
-		// 	$(".home article, .archive article").css("width", arw);
-		// }
 
 
 		//más arhívoknál a cím
