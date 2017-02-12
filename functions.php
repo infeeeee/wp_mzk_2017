@@ -126,7 +126,7 @@ add_action( 'pre_get_posts', 'foo_modify_query_order' );
 	add_filter( 'wp_title', 'html5reset_wp_title', 10, 2 );
 
 show_admin_bar( false );
-
+define( 'GITHUB_UPDATER_EXTENDED_NAMING', true );
 
 
 //OLD STUFF BELOW
