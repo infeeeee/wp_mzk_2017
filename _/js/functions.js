@@ -115,7 +115,7 @@
 			});
 
 			//single mellett a lista ne csússzon tovább
-			if (!postList) {
+			if (!postList && $('#sidebar').length) {
 
 				var sh = $("#sidebar>div").height();
 				var wh = $(window).outerHeight();
