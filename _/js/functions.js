@@ -165,7 +165,7 @@
 
 		}//asztali vége
 
-
+//
 		//többoszloposság beállítása
 		function multiCol(selector, wrapper) {
 			var cww = $(wrapper).width();
