@@ -4,7 +4,7 @@ Theme URI: http://gyetvai-peter.hu/
 Description: Unique theme for Magyar Zeneműkiadó. Based on HTML5-reset
 Author: Peter Gyetvai
 Author URI: http://gyetvai-peter.hu/
-Version: 0.1
+Version: 0.1.1
 License: BSD 2-Clause
 License URI: http://opensource.org/licenses/bsd-license.php
 GitHub Theme URI: https://github.com/infeeeee/wp_mzk_2017
@@ -195,6 +195,9 @@ p{
     margin-bottom: .5em;
 }
 
+hr{
+    border-color: #000;
+}
 
 body>header{
     width: 100%;
@@ -210,7 +213,7 @@ body>header{
 
 #site-title{
     
-    /*display: inline-block;*/
+    display: inline-block;
     /*flex: 0 1 auto;*/
     color: #FEFEFE;
     position: relative;
@@ -356,7 +359,7 @@ opacity: 0.5;
 
 .single .entry-content img{
     padding-bottom: .5em;
-        width: 100%;
+        /*width: 100%;*/
 }
 
 .single .entry-content .gallery{
@@ -392,11 +395,6 @@ opacity: 0.5;
    
 }
 
-
-.single .sslink img{
-    height: 100px;
-    
-}
 
 .single .sslink img:hover{
     opacity: 0.5;
@@ -514,9 +512,6 @@ opacity: 0.5;
         padding: 0 0.4em;
     }
 
-    body>header nav ul li a{
-        /*padding: 0 0.2em;*/
-    }
 
     #topImage{
         margin: -4em -4em 2em;
@@ -554,22 +549,14 @@ opacity: 0.5;
 }
 
 .imgWrapper img {
-    -webkit-transition: all 1s ease; /* Safari and Chrome */
-    -moz-transition: all 1s ease; /* Firefox */
-    -ms-transition: all 1s ease; /* IE 9 */
-    -o-transition: all 1s ease; /* Opera */
-    transition: all 1s ease;
+    
+    /*transition: all .5s ease;*/
 }
 
 .imgWrapper:hover img {
-    -webkit-transform:scale(1.1); /* Safari and Chrome */
-    -moz-transform:scale(1.1); /* Firefox */
-    -ms-transform:scale(1.1); /* IE 9 */
-    -o-transform:scale(1.1); /* Opera */
-     transform:scale(1.1);
+     /*transform:scale(1.1);*/
+  filter: grayscale(100%);
 }
-
-
 
     .single #contentWrapper{
         display: flex;
@@ -594,9 +581,6 @@ opacity: 0.5;
         padding-top: 1em;
     }
 
-    #sidebar>div{
-        
-    }
 
 @media screen and (min-width: 1024px) {
 /*body {

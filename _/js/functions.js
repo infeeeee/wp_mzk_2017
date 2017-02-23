@@ -94,6 +94,15 @@
 			});
 
 
+			$("#contentWrapper").click(function () {
+				if (!$('#site-title a').hasClass("menuHidden")) {
+					$("header nav").stop().slideUp();
+					$('#site-title a').addClass("menuHidden");
+				}
+			})
+
+
+
 
 
 
@@ -161,11 +170,24 @@
 			if (pw >= 480 && !postList) {
 				$(".relatedWrapper img").wrap("<span class='imgWrapper'></span>")
 			}
+			// $(".articleTitle>h2 a").hover(
+			// 	function(e){
+			// 		$(this).parents('article').find('img').trigger(e.type);
+			// 		$(".single .entry-content img").trigger(e.type);
+			// 	});
 
 
 		}//asztali vége
 
-//
+		//band alatti social linkek
+		if ($(".sslink").first().length>0) {
+			var ssH = $(".sslink img").first()[0].getBoundingClientRect().height;
+			if (ssH > 100) {
+				$(".sslink img").css("height", "100px");
+			}
+		}
+
+
 		//többoszloposság beállítása
 		function multiCol(selector, wrapper) {
 			var cww = $(wrapper).width();
