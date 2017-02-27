@@ -4,7 +4,7 @@ Theme URI: http://gyetvai-peter.hu/
 Description: Unique theme for Magyar Zeneműkiadó. Based on HTML5-reset
 Author: Peter Gyetvai
 Author URI: http://gyetvai-peter.hu/
-Version: 0.1.1
+Version: 0.1.2
 License: BSD 2-Clause
 License URI: http://opensource.org/licenses/bsd-license.php
 GitHub Theme URI: https://github.com/infeeeee/wp_mzk_2017
@@ -329,6 +329,10 @@ opacity: 0.5;
     filter: alpha(opacity=50); /* For IE8 and earlier */
 }
 
+.home article, .archive article, .relatedWrapper article{
+    display: inline-block;
+}
+
 .articleTitle{
     text-align: center;
     padding-top: .3em;
@@ -405,6 +409,10 @@ opacity: 0.5;
     padding-top: 1em;
 }
 
+.single #contentWrapper>article>.entry-content iframe{
+    width: 100%;
+}
+
 #comment{
     width: 100%;
 }
@@ -466,6 +474,14 @@ opacity: 0.5;
   .single .relatedWrapper article{
       flex: 0 1 auto;
   }
+
+.single #sslinkWrapper{
+    justify-content: flex-start;
+
+}
+    #aboutbox p:last-child{
+        justify-content: flex-start;
+    }
 
 
 }
@@ -535,9 +551,6 @@ opacity: 0.5;
         position: relative;
     }
 
-    #aboutbox p:last-child{
-        justify-content: flex-start;
-    }
 
 .imgWrapper{
     width: 100%;
@@ -568,10 +581,7 @@ opacity: 0.5;
 
     }
 
-.single #sslinkWrapper{
-    justify-content: flex-start;
 
-}
 
     #sidebar{
         display: block;

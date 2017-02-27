@@ -180,10 +180,10 @@
 		}//asztali vége
 
 		//band alatti social linkek
-		if ($(".sslink").first().length>0) {
+		if ($(".sslink").first().length > 0) {
 			var ssH = $(".sslink img").first()[0].getBoundingClientRect().height;
-			if (ssH > 100) {
-				$(".sslink img").css("height", "100px");
+			if (ssH > 50) {
+				$(".sslink img").css("height", "50px");
 			}
 		}
 
@@ -213,16 +213,20 @@
 				}
 			}
 			var arw = (cww - (5 * (colNum - 1))) / colNum
+			var arwF = Math.floor(arw);
+			if (arw != arwF) {
+				arw = arwF;
+			}
 			$(selector + ' ' + wrapper + " article").css("width", arw);
 			console.log('wrapper width:' + cww + ' col width:' + arw);
 		}
 
 
-		if (pw >= 480 && postList) {
+		if (/*pw >= 480 && */postList) {
 			multiCol(".home", "#contentWrapper");
 			multiCol(".archive", "#contentWrapper");
 		}
-		if (pw >= 480 && !postList) {
+		if (/*pw >= 480 && */!postList) {
 			multiCol('.single', '.relatedWrapper')
 		}
 
