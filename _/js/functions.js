@@ -170,22 +170,30 @@
 			if (pw >= 480 && !postList) {
 				$(".relatedWrapper img").wrap("<span class='imgWrapper'></span>")
 			}
-			// $(".articleTitle>h2 a").hover(
-			// 	function(e){
-			// 		$(this).parents('article').find('img').trigger(e.type);
-			// 		$(".single .entry-content img").trigger(e.type);
-			// 	});
+			$(".articleTitle>h2 a").hover(function () {
+				$(this).closest('article').find('.imgWrapper').addClass("hover");
+				//$(".single .entry-content img").hide()//.trigger(e.type);
+			}, function () {
+				$(this).closest('article').find('.imgWrapper').removeClass("hover");
+			});
+			$(".imgWrapper").hover(function () {
+				$(this).closest('article').find(".articleTitle h2 a").css("font-style", "italic")
+			}, function () {
+				$(this).closest('article').find(".articleTitle h2 a").css("font-style", "")
+			});
+
 
 
 		}//asztali vége
 
 		//band alatti social linkek
-		if ($(".sslink").first().length > 0) {
-			var ssH = $(".sslink img").first()[0].getBoundingClientRect().height;
-			if (ssH > 50) {
-				$(".sslink img").css("height", "50px");
-			}
-		}
+		// if ($(".sslink").first().length > 0) {
+		// 	var ssH = $(".sslink img").first()[0].getBoundingClientRect().height;
+		// 	console.log(ssH);
+		// 	if (ssH > 50) {
+		// 		$(".sslink img").css("height", "50px");
+		// 	}
+		// }
 
 
 		//többoszloposság beállítása
@@ -199,14 +207,14 @@
 			} else if (pw >= 768) {
 				colNum = 4;
 
-				$("article").each(function () {
+				$(wrapper + " article").each(function () {
 					an++;
 				})
 
 				var anm = an / 4 - Math.floor(an / 4)
 				var dn = 4 - (anm / 0.25)
 
-				if (dn > 0) {
+				if (dn > 0 && an > 0) {
 					for (var i = 0; i < dn; i++) {
 						$(wrapper).append('<article class="dummy"></article>')
 					}
@@ -239,6 +247,11 @@
 			arch2 = true;
 		}
 
+
+		//ha nincs release, akkor ne jelenjen meg a felirat
+		if ($('.relatedWrapper').children().length == 0) {
+			$(".relatedTitle").hide();
+		}
 
 
 		//ne takrja ki az oldal tetejét a header

@@ -4,7 +4,7 @@ Theme URI: http://gyetvai-peter.hu/
 Description: Unique theme for Magyar Zeneműkiadó. Based on HTML5-reset
 Author: Peter Gyetvai
 Author URI: http://gyetvai-peter.hu/
-Version: 0.1.2
+Version: 0.1.2a
 License: BSD 2-Clause
 License URI: http://opensource.org/licenses/bsd-license.php
 GitHub Theme URI: https://github.com/infeeeee/wp_mzk_2017
@@ -292,6 +292,16 @@ body>header nav{
 }
 
 
+.home #contentWrapper, .archive #contentWrapper, .single .relatedWrapper{
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: space-between;
+        align-items: flex-start;
+        align-content: flex-start;
+        max-width: 1935px;
+        margin: auto;
+    }
+
 #topImage{
     margin: -1em -1em 0;
 }
@@ -335,8 +345,9 @@ opacity: 0.5;
 
 .articleTitle{
     text-align: center;
-    padding-top: .3em;
-    padding-bottom: 2em;
+    /*padding-top: .3em;
+    padding-bottom: 2em;*/
+    padding: .3em .1em 2em;
 }
 
 .articleTitle h2{
@@ -344,9 +355,18 @@ opacity: 0.5;
 }
 .articleTitle .theTags{
     font-weight: 200;
+        display: flex;
+    justify-content: center;
+    align-content: flex-start;
+    flex-wrap: wrap;
 }
 
 .theTags span{
+    display: inline;
+}
+
+
+.single .theTags span{
     display: inline-block;
 }
 
@@ -399,6 +419,9 @@ opacity: 0.5;
    
 }
 
+.single .sslink img{
+    max-height: 50px;
+}
 
 .single .sslink img:hover{
     opacity: 0.5;
@@ -448,7 +471,9 @@ opacity: 0.5;
 /*body {
     font-size: 20px ;}*/
 
-    .home #contentWrapper, .archive #contentWrapper, .single .relatedWrapper{
+
+    /*Ezt a szakaszt áthelyeztem a mobilosba, ha mégse kéne a kétoszloposság, akkor vissza kell rakni ide.*/
+    /*.home #contentWrapper, .archive #contentWrapper, .single .relatedWrapper{
         display: flex;
         flex-wrap: wrap;
         justify-content: space-between;
@@ -456,7 +481,7 @@ opacity: 0.5;
         align-content: flex-start;
         max-width: 1935px;
         margin: auto;
-    }
+    }*/
 
    
     
@@ -562,13 +587,12 @@ opacity: 0.5;
 }
 
 .imgWrapper img {
-    
-    /*transition: all .5s ease;*/
+    transition: all 1s ease;
 }
 
-.imgWrapper:hover img {
-     /*transform:scale(1.1);*/
-  filter: grayscale(100%);
+.imgWrapper:hover img, .imgWrapper.hover img {
+     transform:scale(1.1);
+  /*filter: grayscale(100%);*/
 }
 
     .single #contentWrapper{
