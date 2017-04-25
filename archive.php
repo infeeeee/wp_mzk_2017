@@ -36,22 +36,43 @@
 
 			<?php while (have_posts()) : the_post(); ?>
 			
-				
-				
-						<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
+			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
-			
-<a href="<?php the_permalink() ?>">
-			<?php if ( has_post_thumbnail() ) {
-							the_post_thumbnail('homepage-thumb');
-							} ?> 
-</a>
-			<div class="articleTitle">
-			<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
-			<?php the_tags('<p class="theTags">', ', ', '</p>'); ?>
-			</div>
+				<?php if ( in_category( 'tour-date' )) { ?>
+					<a href="<?php the_permalink() ?>">
+						<?php if ( has_post_thumbnail() ) {
+								the_post_thumbnail('event-thumb-small');
+								} ?> 
+					</a>
 
-			
+					<div class="articleTitle">
+						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+					
+						<div class="eventMeta">
+							<?php
+								$tour_date = get_post_meta( get_the_ID(), 'Tour Date', true );
+								$tour_venue = get_post_meta( get_the_ID(), 'Tour Venue', true );
+								$tour_city = get_post_meta( get_the_ID(), 'Tour City', true );
+								if ( ! empty( $tour_date ) && ! empty( $tour_venue ) && ! empty( $tour_city ) ) {
+									echo $tour_date . '<br>';
+									echo $tour_venue . ' ' . $tour_city;
+								}
+							?>
+						</div>
+					</div>
+
+			<?php } else {?>
+
+				<a href="<?php the_permalink() ?>">
+					<?php if ( has_post_thumbnail() ) {
+								the_post_thumbnail('homepage-thumb');
+								} ?> 
+				</a>
+				<div class="articleTitle">
+					<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
+					<?php the_tags('<p class="theTags">', ', ', '</p>'); ?>			
+				</div>
+			<?php } ?>
 
 		</article>
 

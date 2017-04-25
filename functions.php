@@ -22,6 +22,8 @@
 
 		add_image_size( 'homepage-thumb', 480, 480, true ); 
     	add_image_size( 'text-icon', 1024, 70, false ); 
+		add_image_size( 'event-thumb-big', 1200, 675, true );
+		add_image_size( 'event-thumb-small', 480, 270, true );
 
 		add_theme_support( 'custom-header' );
 
@@ -61,7 +63,10 @@ add_filter( 'image_size_names_choose', 'custom_image_sizes_choose' );
 function custom_image_sizes_choose( $sizes ) {
     $custom_sizes = array(
         'homepage-thumb' => 'Homepage thumbnail',
-		'text-icon' => 'Társkiadó ikon'
+		'text-icon' => 'Társkiadó ikon',
+		'event-thumb-big' => 'Event thumbnail - big',
+		'event-thumb-small' => 'Event thumbnail - small',
+
     );
     return array_merge( $sizes, $custom_sizes );
 }
