@@ -73,8 +73,8 @@
 
 				$tour_facebook = get_post_meta( get_the_ID(), 'Tour Facebook', true );
 				if ( ! empty( $tour_facebook ) ) {
-					echo $tour_facebook . '<br>';
-					// echo '<a class="sslink" href="' . $tour_venue . '"><img src="' . get_template_directory_uri() . '/icons/youtube.png"></a>';
+					// echo $tour_facebook . '<br>';
+					echo '<a href="' . $tour_facebook . '">Facebook event</a><br>';
 				}
 
 				$tour_price = get_post_meta( get_the_ID(), 'Tour Price', true );
