@@ -21,7 +21,7 @@
 		add_theme_support( 'post-thumbnails' );
 
 		add_image_size( 'homepage-thumb', 480, 480, true ); 
-    	add_image_size( 'text-icon', 1024, 70, false ); 
+    	add_image_size( 'text-icon', 1024, 55, false ); 
 		add_image_size( 'event-thumb-big', 1200, 675, true );
 		add_image_size( 'event-thumb-small', 480, 270, true );
 

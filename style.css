@@ -4,12 +4,13 @@ Theme URI: http://gyetvai-peter.hu/
 Description: Unique theme for Magyar Zeneműkiadó. Based on HTML5-reset
 Author: Peter Gyetvai
 Author URI: http://gyetvai-peter.hu/
-Version: 0.1.4
+Version: 0.2.0
 License: BSD 2-Clause
 License URI: http://opensource.org/licenses/bsd-license.php
 GitHub Theme URI: https://github.com/infeeeee/wp_mzk_2017
 GitHub Branch: master
 */
+
 
 /* Ok, this is where the fun starts.
 -------------------------------------------------------------------------------*/
@@ -17,117 +18,93 @@ GitHub Branch: master
 @font-face {
     font-family: 'DINPro';
     src: url('fonts/DINProMedium.eot');
-    src: url('fonts/DINProMedium.eot') format('embedded-opentype'),
-         url('fonts/DINProMedium.woff2') format('woff2'),
-         url('fonts/DINProMedium.woff') format('woff'),
-         url('fonts/DINProMedium.ttf') format('truetype'),
-         url('fonts/DINProMedium.svg#DINProMedium') format('svg');
+    src: url('fonts/DINProMedium.eot') format('embedded-opentype'), url('fonts/DINProMedium.woff2') format('woff2'), url('fonts/DINProMedium.woff') format('woff'), url('fonts/DINProMedium.ttf') format('truetype'), url('fonts/DINProMedium.svg#DINProMedium') format('svg');
     font-weight: 400;
-
 }
-
 
 @font-face {
     font-family: 'DINPro';
     src: url('fonts/DINProBold.eot');
-    src: url('fonts/DINProBold.eot') format('embedded-opentype'),
-         url('fonts/DINProBold.woff2') format('woff2'),
-         url('fonts/DINProBold.woff') format('woff'),
-         url('fonts/DINProBold.ttf') format('truetype'),
-         url('fonts/DINProBold.svg#DINProBold') format('svg');
+    src: url('fonts/DINProBold.eot') format('embedded-opentype'), url('fonts/DINProBold.woff2') format('woff2'), url('fonts/DINProBold.woff') format('woff'), url('fonts/DINProBold.ttf') format('truetype'), url('fonts/DINProBold.svg#DINProBold') format('svg');
     font-weight: 700;
 }
 
 @font-face {
     font-family: 'DINPro';
     src: url('fonts/DINProLight.eot');
-    src: url('fonts/DINProLight.eot') format('embedded-opentype'),
-         url('fonts/DINProLight.woff2') format('woff2'),
-         url('fonts/DINProLight.woff') format('woff'),
-         url('fonts/DINProLight.ttf') format('truetype'),
-         url('fonts/DINProLight.svg#DINProLight') format('svg');
+    src: url('fonts/DINProLight.eot') format('embedded-opentype'), url('fonts/DINProLight.woff2') format('woff2'), url('fonts/DINProLight.woff') format('woff'), url('fonts/DINProLight.ttf') format('truetype'), url('fonts/DINProLight.svg#DINProLight') format('svg');
     font-weight: 200;
 }
 
 @font-face {
     font-family: 'DINPro';
     src: url('fonts/DINProMediumItalic.eot');
-    src: url('fonts/DINProMediumItalic.eot') format('embedded-opentype'),
-         url('fonts/DINProMediumItalic.woff2') format('woff2'),
-         url('fonts/DINProMediumItalic.woff') format('woff'),
-         url('fonts/DINProMediumItalic.ttf') format('truetype'),
-         url('fonts/DINProMediumItalic.svg#DINProMediumItalic') format('svg');
-     font-style: italic;
-         font-weight: 400;
-
+    src: url('fonts/DINProMediumItalic.eot') format('embedded-opentype'), url('fonts/DINProMediumItalic.woff2') format('woff2'), url('fonts/DINProMediumItalic.woff') format('woff'), url('fonts/DINProMediumItalic.ttf') format('truetype'), url('fonts/DINProMediumItalic.svg#DINProMediumItalic') format('svg');
+    font-style: italic;
+    font-weight: 400;
 }
 
 @font-face {
     font-family: 'DINPro';
     src: url('fonts/DINProBoldItalic.eot');
-    src: url('fonts/DINProBoldItalic.eot') format('embedded-opentype'),
-         url('fonts/DINProBoldItalic.woff2') format('woff2'),
-         url('fonts/DINProBoldItalic.woff') format('woff'),
-         url('fonts/DINProBoldItalic.ttf') format('truetype'),
-         url('fonts/DINProBoldItalic.svg#DINProBoldItalic') format('svg');
-         font-style: italic;
+    src: url('fonts/DINProBoldItalic.eot') format('embedded-opentype'), url('fonts/DINProBoldItalic.woff2') format('woff2'), url('fonts/DINProBoldItalic.woff') format('woff'), url('fonts/DINProBoldItalic.ttf') format('truetype'), url('fonts/DINProBoldItalic.svg#DINProBoldItalic') format('svg');
+    font-style: italic;
     font-weight: 700;
 }
 
 @font-face {
     font-family: 'DINPro';
     src: url('fonts/DINProLightItalic.eot');
-    src: url('fonts/DINProLightItalic.eot') format('embedded-opentype'),
-         url('fonts/DINProLightItalic.woff2') format('woff2'),
-         url('fonts/DINProLightItalic.woff') format('woff'),
-         url('fonts/DINProLightItalic.ttf') format('truetype'),
-         url('fonts/DINProLightItalic.svg#DINProLightItalic') format('svg');
+    src: url('fonts/DINProLightItalic.eot') format('embedded-opentype'), url('fonts/DINProLightItalic.woff2') format('woff2'), url('fonts/DINProLightItalic.woff') format('woff'), url('fonts/DINProLightItalic.ttf') format('truetype'), url('fonts/DINProLightItalic.svg#DINProLightItalic') format('svg');
     font-style: italic;
     font-weight: 200;
-
-
 }
 
 @font-face {
     font-family: 'HighVoltage';
     src: url('fonts/HighVoltage.eot');
-    src: url('fonts/HighVoltage.eot') format('embedded-opentype'),
-         url('fonts/HighVoltage.woff2') format('woff2'),
-         url('fonts/HighVoltage.woff') format('woff'),
-         url('fonts/HighVoltage.ttf') format('truetype'),
-         url('fonts/HighVoltage.svg#HighVoltage') format('svg');
+    src: url('fonts/HighVoltage.eot') format('embedded-opentype'), url('fonts/HighVoltage.woff2') format('woff2'), url('fonts/HighVoltage.woff') format('woff'), url('fonts/HighVoltage.ttf') format('truetype'), url('fonts/HighVoltage.svg#HighVoltage') format('svg');
 }
 
 
-
 /* A Linux- and Windows-friendly sans-serif font stack: http://prospects.mhurrell.co.uk/post/updating-the-helvetica-font-stack */
+
 body {
-    font: 18px 'DINPro', sans-serif;}
+    font: 18px 'DINPro', sans-serif;
+}
+
 
 /* Using local fonts? Check out Font Squirrel's webfont generator: http://www.fontsquirrel.com/tools/webfont-generator */
 
+
 /* We like off-black for text. */
-body, select, input, textarea {color: #1F1B20;}
+
+body,
+select,
+input,
+textarea {
+    color: #1F1B20;
+}
 
 a {
     color: inherit;
     text-decoration: none !important;
-
 }
+
 a:hover {
     font-style: italic;
     text-decoration: none !important;
 }
 
-img{
+img {
     height: auto;
 }
 
-.no-js #loader{
+.no-js #loader {
     display: none !important;
 }
 
-.js #loader{
+.js #loader {
     position: fixed;
     top: 0;
     bottom: 0;
@@ -142,64 +119,105 @@ img{
     align-items: center;
 }
 
-
-
-.js #loader img{
-    animation:spin 2s linear infinite;
+.js #loader img {
+    animation: spin 2s linear infinite;
 }
 
-@keyframes spin { 100% { -webkit-transform: rotate(360deg); transform:rotate(360deg); } }
+@keyframes spin {
+    100% {
+        -webkit-transform: rotate(360deg);
+        transform: rotate(360deg);
+    }
+}
+
 
 /* Custom text-selection colors (remove any text shadows: http://twitter.com/miketaylr/status/12228805301) */
-::-moz-selection{background: #808080; color: #fff; text-shadow: none;}
-::selection {background: #808080; color: #fff; text-shadow: none;}
+
+::-moz-selection {
+    background: #808080;
+    color: #fff;
+    text-shadow: none;
+}
+
+::selection {
+    background: #808080;
+    color: #fff;
+    text-shadow: none;
+}
+
 
 /*	j.mp/webkit-tap-highlight-color */
-a:link {-webkit-tap-highlight-color: #808080;}
 
-ins {background-color: #808080; color: #000; text-decoration: none;}
-mark {background-color: #808080; color: #000; font-style: italic; font-weight: bold;}
+a:link {
+    -webkit-tap-highlight-color: #808080;
+}
+
+ins {
+    background-color: #808080;
+    color: #000;
+    text-decoration: none;
+}
+
+mark {
+    background-color: #808080;
+    color: #000;
+    font-style: italic;
+    font-weight: bold;
+}
+
 
 /* Mozilla dosen't style place holders by default */
-input:-moz-placeholder { color:#a9a9a9; }
-textarea:-moz-placeholder { color:#a9a9a9; }
+
+input:-moz-placeholder {
+    color: #a9a9a9;
+}
+
+textarea:-moz-placeholder {
+    color: #a9a9a9;
+}
 
 
 /* And here begins the WordPress fun.
 -------------------------------------------------------------------------------*/
 
-h1{
+h1 {
     font-size: 2.2em;
     font-weight: 700;
 }
-h2{
+
+
+h2 {
     font-size: 1.8em;
     font-weight: 700;
 }
 
-h3{
+h3 {
     font-size: 1.5em;
     font-weight: 700;
 }
 
-h4{
+h3.inline {
+    display: inline;
+}
+
+h4 {
     font-weight: 700;
 }
 
-strong{
+strong {
     font-weight: 400;
 }
 
-p{
+p {
     font-weight: 200;
     margin-bottom: .5em;
 }
 
-hr{
+hr {
     border-color: #000;
 }
 
-body>header{
+body>header {
     width: 100%;
     position: fixed;
     margin: 0;
@@ -211,8 +229,7 @@ body>header{
     z-index: 99;
 }
 
-#site-title{
-    
+#site-title {
     display: inline-block;
     /*flex: 0 1 auto;*/
     color: #FEFEFE;
@@ -221,7 +238,7 @@ body>header{
     /*right: .7em;*/
 }
 
-#site-title h1{
+#site-title h1, .contactMZK {
     font-family: 'HighVoltage', sans-serif;
     display: inline-block;
     font-size: 2.2em;
@@ -232,22 +249,24 @@ body>header{
     font-weight: 400;
 }
 
+.contactTitle{
+    font-weight: normal;
+}
 
-
-#site-title a{
+#site-title a {
     font-style: normal;
 }
 
-#site-title div{
+#site-title div {
     display: inline;
 }
 
-#site-title .description{
-  position: relative;
-  /*right: .5em;*/
+#site-title .description {
+    position: relative;
+    /*right: .5em;*/
 }
 
-body>header nav{
+body>header nav {
     display: block;
     /*flex: 0 1 auto;*/
     color: #FEFEFE;
@@ -255,12 +274,12 @@ body>header nav{
     padding-bottom: .5em;
 }
 
-#social-box{
+#social-box {
     float: right;
     padding-top: .5em;
 }
 
-#social-box a{
+#social-box a {
     width: 1em;
     height: 1em;
     background-repeat: no-repeat;
@@ -268,61 +287,65 @@ body>header nav{
     display: inline-block;
 }
 
-
-#facebookButton{
+#facebookButton {
     background-image: url('icons/facebook_off.svg');
 }
 
-#facebookButton:hover{
+#facebookButton:hover {
     background-image: url('icons/facebook_on.svg');
 }
 
-#instagramButton{
+#instagramButton {
     background-image: url('icons/insta_off.svg');
     margin-left: .5em;
 }
 
-#instagramButton:hover{
+#instagramButton:hover {
     background-image: url('icons/insta_on.svg');
-    
 }
 
-#contentWrapper, #aboutWrapper{
+#contentWrapper,
+#aboutWrapper {
     padding: 1em;
 }
 
+.home #contentWrapper,
+.archive #contentWrapper,
+.single .relatedWrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    align-items: flex-start;
+    align-content: flex-start;
+    max-width: 1935px;
+    margin: auto;
+}
 
-.home #contentWrapper, .archive #contentWrapper, .single .relatedWrapper{
-        display: flex;
-        flex-wrap: wrap;
-        justify-content: space-between;
-        align-items: flex-start;
-        align-content: flex-start;
-        max-width: 1935px;
-        margin: auto;
-    }
+.home #aboutWrapper #aboutbox img{
+    padding-right: .5em;
+}
 
-#topImage{
+#topImage {
     margin: -1em -1em 0;
 }
 
-#topImage img{
+#topImage img {
     width: 100%;
 }
 
-#aboutbox h2{
+#aboutbox h2 {
     font-size: 1.8em;
     font-weight: 700;
     padding-bottom: .5em;
 }
 
-#aboutbox p:last-child{
+#aboutbox p:last-child {
     display: flex;
     justify-content: space-between;
     padding: .5em 0 2em;
 }
 
-#aboutbox p:last-child a{
+#aboutbox p:last-child a {
     flex: 0 1 auto;
     padding: 5px;
     display: flex;
@@ -330,158 +353,177 @@ body>header nav{
     justify-content: center;
 }
 
-#aboutbox p:last-child a img{
+#aboutbox p:last-child a img {
     width: 100%;
 }
 
-#aboutbox p:last-child a img:hover{
+#aboutbox p:last-child a img:hover {
     opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+    filter: alpha(opacity=50);
+    /* For IE8 and earlier */
 }
 
-.home article, .archive article, .relatedWrapper article{
+.home article,
+.archive article,
+.relatedWrapper article {
     display: inline-block;
 }
 
-.articleTitle{
+.articleTitle {
     text-align: center;
     /*padding-top: .3em;
     padding-bottom: 2em;*/
     padding: .3em .1em 2em;
 }
 
-.articleTitle h2{
+.articleTitle h2 {
     font-size: inherit;
     padding: 0 .5em;
 }
-.articleTitle .theTags{
+
+.articleTitle .theTags {
     font-weight: 200;
-        display: flex;
+    display: flex;
     justify-content: center;
     align-content: flex-start;
     flex-wrap: wrap;
 }
 
-.theTags span{
+.theTags span {
     display: inline;
 }
 
-
-.single .theTags span{
+.single .theTags span {
     display: inline-block;
 }
 
-
-.single .singleHeader{
+.single .singleHeader {
     padding-bottom: 1em;
 }
-
 
 .single .singleHeader .entry-title {
     font-weight: 700;
     font-size: 2em;
 }
 
-.single .entry-content img{
+.single .entry-content img {
     padding-bottom: .5em;
-        /*width: 100%;*/
+    /*width: 100%;*/
 }
 
-.single .entry-content .gallery{
+.single .entry-content .gallery {
     display: flex;
     justify-content: space-between;
 }
 
-
-.single .entry-content .gallery dl{
+.single .entry-content .gallery dl {
     padding: 0 2px;
     flex: 0 1 auto;
 }
 
-.single .entry-content .gallery img{
+.single .entry-content .gallery img {
     border: 0px !important;
     padding-bottom: 0 !important;
 }
 
-
-.single .entry-content, .single .entry-content p{
+.single .entry-content,
+.single .entry-content p {
     font-weight: 200;
 }
 
-.single #sslinkWrapper{
+.single #sslinkWrapper {
     display: flex;
     justify-content: space-between;
     padding: .5em 0 2em;
 }
 
-.single .sslink{
+.single .sslink {
     flex: 0 1 auto;
-   padding: .5em;  
+    padding: .5em;
 }
 
-.single .sslink img{
+.single .sslink img {
     max-height: 50px;
 }
 
-.single .sslink img:hover{
+.single .sslink img:hover {
     opacity: 0.5;
-    filter: alpha(opacity=50); /* For IE8 and earlier */
+    filter: alpha(opacity=50);
+    /* For IE8 and earlier */
 }
 
-.single .relatedTitle{
+.single .relatedTitle {
     padding-top: 1em;
+    padding-bottom: .5em;
 }
 
-.single #contentWrapper>article>.entry-content iframe{
+.single #contentWrapper>article>.entry-content iframe {
     width: 100%;
 }
 
-#comment{
+.ytcontainer {
+    position: relative;
+    width: 100%;
+    height: 0;
+    padding-bottom: 56.25%
+}
+
+.ytcontainer iframe {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+}
+
+#comment {
     width: 100%;
 }
 
-
-#sidebar{
+#sidebar {
     display: none;
 }
 
-#sidebar article{
+#sidebar article {
     margin-bottom: 0;
     padding-bottom: 0;
     border-width: 0;
 }
 
-.archive .pagetitle{
-  padding: 0.5em 1em 0;
+.archive .pagetitle {
+    padding: 0.5em 1em 0;
 }
 
-
-.category-tour-date .articleTitle{
+.category-tour-date .articleTitle {
     text-align: left;
-
 }
 
-.category-tour-date .eventMeta{
+.category-tour-date .eventMeta {
     margin-top: .5em;
+    padding: 0 .5em;
 }
+
+.single #eventData div {
+    padding-bottom: .6rem;
+}
+
 
 /* Print styles!
 -------------------------------------------------------------------------------*/
-@media print {
 
-}
+@media print {}
 
 
 /* Media queries!
 -------------------------------------------------------------------------------*/
 
+
 /* Always do mobile-first, and consider using em units: http://blog.cloudfour.com/the-ems-have-it-proportional-media-queries-ftw
  */
+
 @media screen and (min-width: 480px) {
-/*body {
+    /*body {
     font-size: 20px ;}*/
-
-
     /*Ezt a szakaszt áthelyeztem a mobilosba, ha mégse kéne a kétoszloposság, akkor vissza kell rakni ide.*/
     /*.home #contentWrapper, .archive #contentWrapper, .single .relatedWrapper{
         display: flex;
@@ -492,168 +534,136 @@ body>header nav{
         max-width: 1935px;
         margin: auto;
     }*/
-
-   
-    
-    .home article, .archive article{
+    .home article,
+    .archive article {
         flex: 0 1 auto;
     }
-
-
-    
-    .home article, .archive article{
+    .home article,
+    .archive article {
         /*display: inline-block;*/
         width: 40%;
     }
-
-  .single .relatedWrapper article{
-      flex: 0 1 auto;
-  }
-
-.single #sslinkWrapper{
-    justify-content: flex-start;
-
-}
-    #aboutbox p:last-child{
+    .single .relatedWrapper article {
+        flex: 0 1 auto;
+    }
+    .single #sslinkWrapper {
         justify-content: flex-start;
     }
-
-
+    #aboutbox p:last-child {
+        justify-content: flex-start;
+    }
 }
 
 @media screen and (min-width: 768px) {
     /*body {
         font-size: 26px ;}*/
-
-
-    body>header{
+    body>header {
         display: flex;
         justify-content: space-between;
         align-items: flex-end;
         padding: .8em 3em;
     }
-
-    #site-title{
+    #site-title {
         flex: 1 1 auto;
         display: flex;
         align-items: flex-end;
         height: 1em;
         bottom: 0;
-    }    
-
-    body>header nav{
+    }
+    body>header nav {
         flex: 0 1 auto;
         padding-bottom: 0;
     }
-    
-    #social-box{
+    #social-box {
         flex: 0 1 auto;
         padding-left: 1em;
         padding-top: 0;
     }
-
-    body>header nav ul{
+    body>header nav ul {
         display: flex;
         justify-content: space-between;
     }
-
-    body>header nav ul li{
+    body>header nav ul li {
         flex: 0 1 auto;
         text-align: center;
         padding: 0 0.4em;
     }
-
-
-    #topImage{
+    #topImage {
         margin: -4em -4em 2em;
     }
-
-    #contentWrapper{
+    #contentWrapper {
         padding: 2em;
     }
-    .archive .pagetitle{
-  padding: 1em 2em 0;
-}
-
-    #aboutWrapper{
+    .archive .pagetitle {
+        padding: 1em 2em 0;
+    }
+    #aboutWrapper {
         padding: 3em;
     }
-
-
-    #aboutbox{
+    #aboutbox {
         width: 90%;
-        
         position: relative;
     }
-
-
-.imgWrapper{
-    width: 100%;
-    height: 100%;
-    overflow: hidden;
-    display: inline-block;
-    line-height: 0;
-
-}
-
-.imgWrapper img {
-    transition: all 1s ease;
-}
-
-.imgWrapper:hover img, .imgWrapper.hover img {
-     transform:scale(1.1);
-  /*filter: grayscale(100%);*/
-}
-
-    .single #contentWrapper{
+    .imgWrapper {
+        width: 100%;
+        height: 100%;
+        overflow: hidden;
+        display: inline-block;
+        line-height: 0;
+    }
+    .imgWrapper img {
+        transition: all 1s ease;
+    }
+    .imgWrapper:hover img,
+    .imgWrapper.hover img {
+        transform: scale(1.1);
+        /*filter: grayscale(100%);*/
+    }
+    .single #contentWrapper {
         display: flex;
         justify-content: space-between;
     }
-
-    .single #contentWrapper>article{
+    .single #contentWrapper>article {
         flex: 1 1 auto;
-
     }
-
-
-
-    #sidebar{
+    #sidebar {
         display: block;
         flex: 1 1 auto;
         padding-left: 2em;
         min-width: 11em;
         padding-top: 1em;
     }
-
-
-@media screen and (min-width: 1024px) {
-/*body {
+    #sidebar .upw-posts {
+        display: flex;
+        flex-direction: column;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    #sidebar .upw-posts h4 {
+        display: flex;
+        justify-content: flex-start;
+        align-items: flex-start;
+    }
+    @media screen and (min-width: 1024px) {
+        /*body {
         font: 30px ;}*/
-
-        body>header{
+        body>header {
             padding: .8em 8em;
         }
-
-    .home #contentWrapper{
-        padding: 2em 4em;
+        .home #contentWrapper {
+            padding: 2em 4em;
+        }
+        .single #contentWrapper {
+            padding: 2em 8em;
+        }
+        .archive .pagetitle {
+            padding: 4em;
+        }
+        #aboutWrapper {
+            padding: 8em 8em 1em;
+        }
+        #topImage {
+            margin: -8em -8em 2em;
+        }
     }
-
-    .single #contentWrapper{
-    padding: 2em 8em;
-    }
-
-    .archive .pagetitle{
-  padding: 4em;
-}
-
-    #aboutWrapper{
-        padding: 8em 8em 1em;
-    }
-
-    #topImage{
-        margin: -8em -8em 2em;
-    }
-
-}
-
 }

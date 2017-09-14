@@ -141,8 +141,8 @@
 				</a>
 			</div>
 			<div id="social-box">
-				<a id="facebookButton" href="https://facebook.com"></a>
-				<a id="instagramButton" href="https://www.instagram.com/mzk_publishing/"></a>
+				<a id="facebookButton" href="https://www.facebook.com/MagyarZenemukiado/" target="_blank"></a>
+				<a id="instagramButton" href="https://www.instagram.com/mzk_publishing/" target="_blank"></a>
 			</div>
 			<nav id="nav" role="navigation">
 				<?php wp_nav_menu( array('theme_location' => 'primary') ); ?>
@@ -152,9 +152,11 @@
 
 <?php if ( is_home() ) { ?>
 <div id="aboutWrapper">
-<div id="topImage">
-	 <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
-</div>
+	<?php if ( has_header_image() ) { ?>
+		<div id="topImage">
+			 <img src="<?php header_image(); ?>" width="<?php echo get_custom_header()->width; ?>" height="<?php echo get_custom_header()->height; ?>" alt="<?php echo esc_attr( get_bloginfo( 'name', 'display' ) ); ?>">
+		</div>
+	<?php } ?>
 
 
 <div id="aboutbox">

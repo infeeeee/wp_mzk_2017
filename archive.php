@@ -53,9 +53,17 @@
 								$tour_date = get_post_meta( get_the_ID(), 'Tour Date', true );
 								$tour_venue = get_post_meta( get_the_ID(), 'Tour Venue', true );
 								$tour_city = get_post_meta( get_the_ID(), 'Tour City', true );
-								if ( ! empty( $tour_date ) && ! empty( $tour_venue ) && ! empty( $tour_city ) ) {
-									echo $tour_date . '<br>';
-									echo $tour_venue . ' ' . $tour_city;
+								
+								if ( ! empty( $tour_date )  ) {
+									echo $tour_date . '<br>';									
+								}
+
+								if ( ! empty( $tour_venue )  ) {						
+									echo $tour_venue;
+								}
+
+								if ( ! empty( $tour_city ) ) {
+									echo  ', ' . $tour_city;
 								}
 							?>
 						</div>

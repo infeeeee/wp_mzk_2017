@@ -36,7 +36,7 @@
 		}
 
 
-		//az adott kategória nav nagybetűs
+		//az adott kategória nagy nagybetűs
 		var currUrl = (window.location.href).split("/")
 		var lUrl = currUrl[currUrl.length - 2];
 
@@ -49,11 +49,35 @@
 				var mn = $(this).html().toUpperCase();
 				$(this).html(mn);
 			}
-
 		})
 
+		//középre igazított képek középre:
+		$("img.aligncenter").parent().css({
+			"display": "flex",
+			"flex-direction": "column",
+			"align-items": "center"
+		})
+
+		//első n szót megkeresi
+		$.fn.wrapStart = function (numWords) {
+			var node = this.contents().filter(function () { return this.nodeType == 3 }).first(),
+				text = node.text(),
+				first = text.split(" ", numWords).join(" ");
+
+			if (!node.length)
+				return;
+
+			node[0].nodeValue = text.slice(first.length);
+			node.before('<h1 class="contactMZK">' + first + '</h1>');
+		};
 
 
+
+		//Contact oldalon nem látszik a cím, az mzk felirat meg nagy
+		if ($("#contentWrapper>.Contact").length) {
+			$("#contentWrapper>.Contact>h2").hide();
+			$(".contactTitle").wrapStart(1);
+		}
 
 		//tag nevek kisbetűsek
 		$(".theTags a").each(function () {
@@ -68,12 +92,18 @@
 				mn[0] = nn;
 				var mn0 = mn.join("");
 				$(this).html(mn0);
-
 			}
-
-
 		})
 
+
+		//youtube linkek kapjanak egy containert
+		$("iframe").each(function () {
+			var ifUrl = $(this).attr("src");
+			if (ifUrl.indexOf("youtube")) {
+				$(this).wrap("<div class='ytcontainer'></div>")
+			}
+
+		})
 
 
 		//mobil 
@@ -109,22 +139,29 @@
 		} else { //innen asztali (>768)
 			//áthelyezi a social boxot a jobbszélre
 			$("#social-box").appendTo($(header));
-			var mbw = $("header nav ul li").first().outerWidth();
+			// var mbw = $("header nav ul li").first().outerWidth();
 
 			$(".theTags a").wrap("<span class='tg'></span>")
 
 			//ne mozogjon a menü és a tagek hovernél
-			$("header nav ul li, .theTags span ").each(function () {
+			$("header nav ul li, .theTags span,#sidebar article header a").each(function () {
 				var mbw1 = 5;
 				if ($(this).hasClass('tg')) {
-					mbw1 = 1;
+					mbw1 = 2;
 				}
 				var mbw = $(this).outerWidth() + mbw1;
 				$(this).css("width", mbw)
 			});
 
+			$(".archive .articleTitle").each(function () {
+				var mbh = $(this).outerHeight() + 2;
+				$(this).css("height", mbh)
+			})
+
 			//single mellett a lista ne csússzon tovább
-			if (!postList && $('#sidebar').length) {
+			if (!postList && $('#sidebar').length && $("#sidebar .widget").length &&
+				$("article .singleHeader").outerHeight() + $("article .entry-content").outerHeight() + $("article .relatedWrapper").outerHeight() >
+				$("#sidebar div").outerHeight()) {
 
 				var sh = $("#sidebar>div").height();
 				var wh = $(window).outerHeight();
@@ -185,6 +222,26 @@
 
 
 		}//asztali vége
+
+		//ha nincs release, akkor ne jelenjen meg a felirat
+		if (!$('.relatedWrapper').children().length) {
+			$(".relatedTitle").hide();
+		} else if ($('.relatedWrapper>.category-tour-date').length && $('.relatedWrapper>.category-release').length) {
+			//Ha van event, akkor az külön sorban jelenjen meg
+			$('#contentWrapper>article').append('<h2 class="relatedTitle">Tour dates</h2>');
+			$('#contentWrapper>article').append('<div class="relatedWrapper tour-date-wrapper">');
+			$('.relatedWrapper>.category-tour-date').each(function () {
+				if ($(this).hasClass('category-tour-date')) {
+					$(this).appendTo('.tour-date-wrapper')
+				}
+			})
+
+		} else if ($('.relatedWrapper>.category-tour-date').length && !$('.relatedWrapper>.category-release').length) {
+			//ha csak eventek vannak, akkor jó legyen a cím
+			$(".relatedTitle").html('Tour Dates')
+		}
+
+
 
 		//band alatti social linkek
 		// if ($(".sslink").first().length > 0) {
@@ -248,10 +305,6 @@
 		}
 
 
-		//ha nincs release, akkor ne jelenjen meg a felirat
-		if ($('.relatedWrapper').children().length == 0) {
-			$(".relatedTitle").hide();
-		}
 
 
 		//ne takrja ki az oldal tetejét a header
