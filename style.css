@@ -498,11 +498,11 @@ body>header nav {
     text-transform: capitalize;
 }
 
-.category-tour-date .articleTitle {
+.archive.category-tour-date .articleTitle {
     text-align: left;
 }
 
-.category-tour-date .eventMeta {
+.archive.category-tour-date .eventMeta {
     margin-top: .5em;
     padding: 0 .5em;
 }

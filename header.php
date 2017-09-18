@@ -27,9 +27,9 @@
 			echo '<meta name="robots" content="noindex, nofollow" />';
 	?>
 
-	<title><?php wp_title( '|', true, 'right' ); ?></title>
+	<title><?php wp_title( ' ', true, 'right' ); ?></title>
 
-	<meta name="title" content="<?php wp_title( '|', true, 'right' ); ?>">
+	<meta name="title" content="<?php wp_title( ' ', true, 'right' ); ?>">
 
 	<!--Google will often use this as its description of your page/site. Make it good.-->
 	<meta name="description" content="<?php bloginfo('description'); ?>" />

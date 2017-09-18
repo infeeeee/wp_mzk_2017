@@ -154,7 +154,7 @@
 				
 				var mbw1 = 1.3
 				if ($(this).hasClass('tg')) {
-					mbw1 = 1.05;
+					mbw1 = 1.1;
 				}
 				
 				var mbw = parseInt(thow * mbw1)
