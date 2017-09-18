@@ -341,11 +341,12 @@ body>header nav {
 
 #aboutbox p:last-child {
     display: flex;
-    justify-content: space-between;
+    justify-content: flex-start;
     padding: .5em 0 2em;
+    flex-wrap: wrap;
 }
 
-#aboutbox p:last-child a {
+#aboutbox p:last-child a,#aboutbox p:last-child span  {
     flex: 0 1 auto;
     padding: 5px;
     display: flex;
@@ -353,11 +354,13 @@ body>header nav {
     justify-content: center;
 }
 
-#aboutbox p:last-child a img {
+/* #aboutbox p:last-child>img {} */
+
+#aboutbox p:last-child a img, #aboutbox p:last-child span img {
     width: 100%;
 }
 
-#aboutbox p:last-child a img:hover {
+#aboutbox p:last-child a img:hover, #aboutbox p:last-child span img:hover {
     opacity: 0.5;
     filter: alpha(opacity=50);
     /* For IE8 and earlier */
@@ -492,6 +495,7 @@ body>header nav {
 
 .archive .pagetitle {
     padding: 0.5em 1em 0;
+    text-transform: capitalize;
 }
 
 .category-tour-date .articleTitle {
@@ -630,6 +634,7 @@ body>header nav {
         display: block;
         flex: 1 1 auto;
         padding-left: 2em;
+        width: 11em;
         min-width: 11em;
         padding-top: 1em;
     }
@@ -657,7 +662,7 @@ body>header nav {
             padding: 2em 8em;
         }
         .archive .pagetitle {
-            padding: 4em;
+            padding: 2em 4em 0;
         }
         #aboutWrapper {
             padding: 8em 8em 1em;

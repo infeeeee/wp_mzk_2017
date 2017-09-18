@@ -58,6 +58,13 @@
 			"align-items": "center"
 		})
 
+		//a kezdőoldalon levő képek köré kerüljön egy tag, h szépek legyenek, ha nem lenne link
+		$('#aboutbox p:last-child>img').each(function () {
+			$(this).wrap("<span></span>")
+		})
+
+
+
 		//első n szót megkeresi
 		$.fn.wrapStart = function (numWords) {
 			var node = this.contents().filter(function () { return this.nodeType == 3 }).first(),
@@ -70,8 +77,6 @@
 			node[0].nodeValue = text.slice(first.length);
 			node.before('<h1 class="contactMZK">' + first + '</h1>');
 		};
-
-
 
 		//Contact oldalon nem látszik a cím, az mzk felirat meg nagy
 		if ($("#contentWrapper>.Contact").length) {
@@ -145,11 +150,14 @@
 
 			//ne mozogjon a menü és a tagek hovernél
 			$("header nav ul li, .theTags span,#sidebar article header a").each(function () {
-				var mbw1 = 5;
+				var thow = $(this).outerWidth();
+				
+				var mbw1 = 1.3
 				if ($(this).hasClass('tg')) {
-					mbw1 = 2;
+					mbw1 = 1.05;
 				}
-				var mbw = $(this).outerWidth() + mbw1;
+				
+				var mbw = parseInt(thow * mbw1)
 				$(this).css("width", mbw)
 			});
 
@@ -157,6 +165,10 @@
 				var mbh = $(this).outerHeight() + 2;
 				$(this).css("height", mbh)
 			})
+
+
+			console.log($("article .singleHeader").outerHeight() , $("article .entry-content").outerHeight() , $("article .relatedWrapper ").outerHeight() ,
+			$("#sidebar div").outerHeight())
 
 			//single mellett a lista ne csússzon tovább
 			if (!postList && $('#sidebar').length && $("#sidebar .widget").length &&
