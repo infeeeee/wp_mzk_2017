@@ -11,6 +11,14 @@
 	<article <?php post_class() ?> id="post-
 		<?php the_ID(); ?>">
 
+		
+
+			<?php if ( in_category( 'tour-date' ) and has_post_thumbnail() ) {
+								the_post_thumbnail('event-thumb-big');
+			} ?> 
+
+		
+
 
 		<div class="singleHeader">
 			<h1 class="entry-title">

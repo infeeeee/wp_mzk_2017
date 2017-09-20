@@ -33,19 +33,31 @@
 			<?php } ?>
 
 			
+			<?php if ( in_category( 'tour-date' )) { 
+				$args = array(
+					
+					'meta_key' => 'Tour Date',
+					'orderby' => 'meta_value',
+					'order' => 'ASC'
+						);
+				query_posts( $args );
+			} ?>
 
 			<?php while (have_posts()) : the_post(); ?>
 			
 			<article <?php post_class() ?> id="post-<?php the_ID(); ?>">
 
 				<?php if ( in_category( 'tour-date' )) { ?>
-					<a href="<?php the_permalink() ?>">
+					
+
+					<div class="articleTitle">
+					<a class="eventThumbnail" href="<?php the_permalink() ?>">
 						<?php if ( has_post_thumbnail() ) {
 								the_post_thumbnail('event-thumb-small');
 								} ?> 
 					</a>
 
-					<div class="articleTitle">
+
 						<h2><a href="<?php the_permalink() ?>"><?php the_title(); ?></a></h2>
 					
 						<div class="eventMeta">
@@ -53,18 +65,27 @@
 								$tour_date = get_post_meta( get_the_ID(), 'Tour Date', true );
 								$tour_venue = get_post_meta( get_the_ID(), 'Tour Venue', true );
 								$tour_city = get_post_meta( get_the_ID(), 'Tour City', true );
+								$tour_facebook = get_post_meta( get_the_ID(), 'Tour Facebook', true );
+								if ( ! empty( $tour_facebook ) ) {
+									echo '<div class="tourDateFacebook"><a target="_blank" href="' . $tour_facebook . '"><img src="' . get_template_directory_uri() . '/icons/facebook.png"></a></div>';
+								}
 								
+
+
+								echo '<div class="tourDateData">';
 								if ( ! empty( $tour_date )  ) {
 									echo $tour_date . '<br>';									
 								}
 
-								if ( ! empty( $tour_venue )  ) {						
-									echo $tour_venue;
-								}
 
-								if ( ! empty( $tour_city ) ) {
-									echo  ', ' . $tour_city;
+								if ( ! empty( $tour_venue ) and ! empty( $tour_city ) ) {
+									echo '<a target="_blank" href="http://maps.google.com/?q=' . $tour_venue .'">'.$tour_venue . ', ' .$tour_city .'</a>';							
+								} elseif ( ! empty( $tour_venue ) ) {
+									echo '<a target="_blank" href="http://maps.google.com/?q=' . $tour_venue .'">'.$tour_venue . '</a>';
 								}
+								echo '</div>';
+
+								
 							?>
 						</div>
 					</div>

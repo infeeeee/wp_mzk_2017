@@ -30,8 +30,8 @@
 
 		}
 
-		var postList;
-		if ($('body').hasClass('home') || $('body').hasClass('archive')) {
+		var postList =false;
+		if ($('body').hasClass('home') || ($('body').hasClass('archive') && !$('body').hasClass('category-tour-date'))) {
 			postList = true;
 		}
 
@@ -151,12 +151,13 @@
 			//ne mozogjon a menü és a tagek hovernél
 			$("header nav ul li, .theTags span,#sidebar article header a").each(function () {
 				var thow = $(this).outerWidth();
-				
+
 				var mbw1 = 1.3
-				if ($(this).hasClass('tg')) {
+				if ($(this).hasClass('tg') || $(this).hasClass('menu-item')) {
 					mbw1 = 1.1;
+					console.log($(this).attr('id'),mbw1);
 				}
-				
+
 				var mbw = parseInt(thow * mbw1)
 				$(this).css("width", mbw)
 			});
@@ -167,8 +168,8 @@
 			})
 
 
-			console.log($("article .singleHeader").outerHeight() , $("article .entry-content").outerHeight() , $("article .relatedWrapper ").outerHeight() ,
-			$("#sidebar div").outerHeight())
+			console.log($("article .singleHeader").outerHeight(), $("article .entry-content").outerHeight(), $("article .relatedWrapper ").outerHeight(),
+				$("#sidebar div").outerHeight())
 
 			//single mellett a lista ne csússzon tovább
 			if (!postList && $('#sidebar').length && $("#sidebar .widget").length &&
@@ -213,8 +214,10 @@
 			})
 
 			//hover a thumbnaileken
-			if (postList) {
+			if (postList ) {
 				$('article img').wrap("<span class='imgWrapper'></span>")
+			}else if($('body').hasClass('category-tour-date')){	
+				$('.eventThumbnail img').wrap("<span class='imgWrapper'></span>")
 			}
 			if (pw >= 480 && !postList) {
 				$(".relatedWrapper img").wrap("<span class='imgWrapper'></span>")
@@ -235,6 +238,7 @@
 
 		}//asztali vége
 
+		//related:
 		//ha nincs release, akkor ne jelenjen meg a felirat
 		if (!$('.relatedWrapper').children().length) {
 			$(".relatedTitle").hide();
@@ -299,11 +303,11 @@
 		}
 
 
-		if (/*pw >= 480 && */postList) {
+		if (postList) {
 			multiCol(".home", "#contentWrapper");
 			multiCol(".archive", "#contentWrapper");
 		}
-		if (/*pw >= 480 && */!postList) {
+		if (!postList) {
 			multiCol('.single', '.relatedWrapper')
 		}
 

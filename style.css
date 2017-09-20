@@ -321,6 +321,15 @@ body>header nav {
     margin: auto;
 }
 
+.archive.category-tour-date #contentWrapper{
+    flex-direction: column;
+}
+
+.archive.category-tour-date #contentWrapper article{
+    border-bottom: #000 1px solid;
+    width: 100%;
+}
+
 .home #aboutWrapper #aboutbox img{
     padding-right: .5em;
 }
@@ -500,15 +509,43 @@ body>header nav {
 
 .archive.category-tour-date .articleTitle {
     text-align: left;
+    padding-bottom: 1em;
+    padding-top: 1em;
+}
+
+.archive.category-tour-date .eventThumbnail {
+    display: none;
 }
 
 .archive.category-tour-date .eventMeta {
-    margin-top: .5em;
+    margin-top: 1em;
     padding: 0 .5em;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: flex-end;   
+}
+
+.tourDateFacebook{
+    flex: 0 0 auto;
+}
+
+.tourDateFacebook img{
+    height: 2.5em;
+}
+
+.tourDateData{
+    text-align: right;
+    padding-left: 1em;
 }
 
 .single #eventData div {
     padding-bottom: .6rem;
+}
+
+.tourDateFacebook img:hover{
+    opacity: 0.5;
+    filter: alpha(opacity=50);
 }
 
 
@@ -556,6 +593,28 @@ body>header nav {
     #aboutbox p:last-child {
         justify-content: flex-start;
     }
+
+    .archive.category-tour-date .articleTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .archive.category-tour-date .articleTitle>h2{
+        flex: 0 1 auto;
+        width: 55%;
+    }
+
+    .archive.category-tour-date .articleTitle>.eventMeta{
+        flex: 1 0 auto;
+        padding-left: 2em;
+        margin-top: 0;
+        align-items: center;
+    }
+
+
+
 }
 
 @media screen and (min-width: 768px) {
@@ -582,6 +641,9 @@ body>header nav {
         flex: 0 1 auto;
         padding-left: 1em;
         padding-top: 0;
+        display: flex;
+        align-items: center;
+        height: 1.2em;
     }
     body>header nav ul {
         display: flex;
@@ -649,6 +711,26 @@ body>header nav {
         justify-content: flex-start;
         align-items: flex-start;
     }
+
+    /* .archive.category-tour-date .articleTitle{
+        display: flex;
+        flex-direction: row;
+        justify-content: space-between;
+        align-items: center;
+    }
+
+    .archive.category-tour-date .articleTitle>h2{
+        flex: 0 1 auto;
+        width: 55%;
+    }
+
+    .archive.category-tour-date .articleTitle>.eventMeta{
+        flex: 1 0 auto;
+        padding-left: 2em;
+        margin-top: 0;
+        align-items: center;
+    } */
+
     @media screen and (min-width: 1024px) {
         /*body {
         font: 30px ;}*/
@@ -658,7 +740,7 @@ body>header nav {
         .home #contentWrapper {
             padding: 2em 4em;
         }
-        .single #contentWrapper {
+        .single #contentWrapper, .category-tour-date #contentWrapper{
             padding: 2em 8em;
         }
         .archive .pagetitle {
@@ -670,5 +752,23 @@ body>header nav {
         #topImage {
             margin: -8em -8em 2em;
         }
+        .archive.category-tour-date .eventThumbnail {
+            display: block;
+            flex: 0 1 25%;
+        }
+
+        .archive.category-tour-date .articleTitle>.eventMeta{
+            padding-left: 0.5em;
+            width: 36%;
+        }
+
+        .archive.category-tour-date .articleTitle>h2{
+            padding-left: 1em;
+        }
+
+    }
+
+    @media screen and (min-width: 1920px) {
+
     }
 }
