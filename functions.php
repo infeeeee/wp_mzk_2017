@@ -142,7 +142,7 @@ define( 'GITHUB_UPDATER_EXTENDED_NAMING', true );
 		function core_mods() {
 			if ( !is_admin() ) {
 				wp_deregister_script( 'jquery' );
-				wp_register_script( 'jquery', ( "https://ajax.googleapis.com/ajax/libs/jquery/2.2.4/jquery.min.js" ), false);
+				wp_register_script( 'jquery', ( get_template_directory_uri() ."/_/js/jquery-3.2.1.min.js" ), false);
 				wp_enqueue_script( 'jquery' );
 			}
 		}

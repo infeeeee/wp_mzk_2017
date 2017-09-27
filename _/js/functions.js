@@ -1,350 +1,38 @@
 // Browser detection for when you get desparate. A measure of last resort.
 // http://rog.ie/post/9089341529/html5boilerplatejs
-
 // var b = document.documentElement;
 // b.setAttribute('data-useragent',  navigator.userAgent);
 // b.setAttribute('data-platform', navigator.platform);
-
 // sample CSS: html[data-useragent*='Chrome/13.0'] { ... }
-
-
 // remap jQuery to $
-(function ($) {
-
-	/* trigger when page is ready */
-	$(document).ready(function () {
-
-		// your functions go here
-		var pw = $(document).outerWidth();
-
-		//kezdőlapon lescrollol a bandhez, nem átlép
-		if ($('body').hasClass('home')) {
-			$("header nav .mzk-band").click(function (e) {
-				e.preventDefault();
-				$('html, body').animate({
-					scrollTop: $("#contentWrapper").offset().top - 20
-				}, 400);
-				var mn = $(this).html().toUpperCase();
-				$(this).html(mn);
-			});
-
-		}
-
-		var postList =false;
-		if ($('body').hasClass('home') || ($('body').hasClass('archive') && !$('body').hasClass('category-tour-date'))) {
-			postList = true;
-		}
-
-
-		//az adott kategória nagy nagybetűs
-		var currUrl = (window.location.href).split("/")
-		var lUrl = currUrl[currUrl.length - 2];
-
-		$("header nav li").each(function () {
-
-			var classList = $(this).attr('class').split(/\s+/);
-			// console.log(classList);	
-
-			if (classList[0] === "mzk-" + lUrl) {
-				var mn = $(this).html().toUpperCase();
-				$(this).html(mn);
-			}
-		})
-
-		//középre igazított képek középre:
-		$("img.aligncenter").parent().css({
-			"display": "flex",
-			"flex-direction": "column",
-			"align-items": "center"
-		})
-
-		//a kezdőoldalon levő képek köré kerüljön egy tag, h szépek legyenek, ha nem lenne link
-		$('#aboutbox p:last-child>img').each(function () {
-			$(this).wrap("<span></span>")
-		})
-
-
-
-		//első n szót megkeresi
-		$.fn.wrapStart = function (numWords) {
-			var node = this.contents().filter(function () { return this.nodeType == 3 }).first(),
-				text = node.text(),
-				first = text.split(" ", numWords).join(" ");
-
-			if (!node.length)
-				return;
-
-			node[0].nodeValue = text.slice(first.length);
-			node.before('<h1 class="contactMZK">' + first + '</h1>');
-		};
-
-		//Contact oldalon nem látszik a cím, az mzk felirat meg nagy
-		if ($("#contentWrapper>.Contact").length) {
-			$("#contentWrapper>.Contact>h2").hide();
-			$(".contactTitle").wrapStart(1);
-		}
-
-		//tag nevek kisbetűsek
-		$(".theTags a").each(function () {
-			if ($(this).parent(".theTags").hasClass("tn1")) {
-				var mn = $(this).html().toLowerCase();
-				$(this).html(mn);
-
-			} else {
-				$(this).parent(".theTags").addClass("tn1");
-				var mn = $(this).html().toLowerCase().split('');
-				var nn = mn[0].toUpperCase();
-				mn[0] = nn;
-				var mn0 = mn.join("");
-				$(this).html(mn0);
-			}
-		})
-
-
-		//youtube linkek kapjanak egy containert
-		$("iframe").each(function () {
-			var ifUrl = $(this).attr("src");
-			if (ifUrl.indexOf("youtube")) {
-				$(this).wrap("<div class='ytcontainer'></div>")
-			}
-
-		})
-
-
-		//mobil 
-		if (pw < 768) {
-
-			//menü
-			$("header nav").hide();
-
-			$('#site-title a').addClass('menuHidden').click(function (e) {
-				e.preventDefault();
-				if ($(this).hasClass('menuHidden')) {
-					$("header nav").stop().slideDown();
-					$(this).removeClass("menuHidden");
-				} else {
-					$("header nav").stop().slideUp();
-					$(this).addClass("menuHidden");
-				}
-			});
-
-
-			$("#contentWrapper").click(function () {
-				if (!$('#site-title a').hasClass("menuHidden")) {
-					$("header nav").stop().slideUp();
-					$('#site-title a').addClass("menuHidden");
-				}
-			})
-
-
-
-
-
-
-		} else { //innen asztali (>768)
-			//áthelyezi a social boxot a jobbszélre
-			$("#social-box").appendTo($(header));
-			// var mbw = $("header nav ul li").first().outerWidth();
-
-			$(".theTags a").wrap("<span class='tg'></span>")
-
-			//ne mozogjon a menü és a tagek hovernél
-			$("header nav ul li, .theTags span,#sidebar article header a").each(function () {
-				var thow = $(this).outerWidth();
-
-				var mbw1 = 1.3
-				if ($(this).hasClass('tg') || $(this).hasClass('menu-item')) {
-					mbw1 = 1.1;
-					console.log($(this).attr('id'),mbw1);
-				}
-
-				var mbw = parseInt(thow * mbw1)
-				$(this).css("width", mbw)
-			});
-
-			$(".archive .articleTitle").each(function () {
-				var mbh = $(this).outerHeight() + 2;
-				$(this).css("height", mbh)
-			})
-
-
-			console.log($("article .singleHeader").outerHeight(), $("article .entry-content").outerHeight(), $("article .relatedWrapper ").outerHeight(),
-				$("#sidebar div").outerHeight())
-
-			//single mellett a lista ne csússzon tovább
-			if (!postList && $('#sidebar').length && $("#sidebar .widget").length &&
-				$("article .singleHeader").outerHeight() + $("article .entry-content").outerHeight() + $("article .relatedWrapper").outerHeight() >
-				$("#sidebar div").outerHeight()) {
-
-				var sh = $("#sidebar>div").height();
-				var wh = $(window).outerHeight();
-				var st = $("#sidebar>div").offset().top + $("#header").outerHeight();
-				var sFixed = false;
-				var sItemH = $("#sidebar h4:first-child").height();
-
-				if (wh < sh) {
-					$(document).scroll(function () {
-						var scr = $(document).scrollTop();
-						var numm = st + sh - scr - wh;
-						// console.log("sTop:" + st + " sHeight:" + sh + " scroll:" + scr + " wHeight:" + wh);
-						if (numm <= 0 && !sFixed) {
-							$("#sidebar>div").css({ top: st - scr - sItemH, position: "fixed" });
-							sFixed = true;
-						}
-						if (numm > 0 && sFixed) {
-							$("#sidebar>div").css({ top: '0', position: "relative" });
-							sFixed = false;
-						}
-					});
-				} else {
-					$("#sidebar>div").css("position", "fixed");
-				}
-			}
-
-			//single melletti lista betüi nagybetüsek legyenek, ha aktív
-			$("#sidebar>div a").each(function () {
-				var sideUrl = $(this).attr("href").split("/");
-				var sUrl = sideUrl[currUrl.length - 2]
-				if (sUrl == lUrl) {
-					var mn = $(this).html().toUpperCase();
-					$(this).html(mn);
-				}
-
-
-			})
-
-			//hover a thumbnaileken
-			if (postList ) {
-				$('article img').wrap("<span class='imgWrapper'></span>")
-			}else if($('body').hasClass('category-tour-date')){	
-				$('.eventThumbnail img').wrap("<span class='imgWrapper'></span>")
-			}
-			if (pw >= 480 && !postList) {
-				$(".relatedWrapper img").wrap("<span class='imgWrapper'></span>")
-			}
-			$(".articleTitle>h2 a").hover(function () {
-				$(this).closest('article').find('.imgWrapper').addClass("hover");
-				//$(".single .entry-content img").hide()//.trigger(e.type);
-			}, function () {
-				$(this).closest('article').find('.imgWrapper').removeClass("hover");
-			});
-			$(".imgWrapper").hover(function () {
-				$(this).closest('article').find(".articleTitle h2 a").css("font-style", "italic")
-			}, function () {
-				$(this).closest('article').find(".articleTitle h2 a").css("font-style", "")
-			});
-
-
-
-		}//asztali vége
-
-		//related:
-		//ha nincs release, akkor ne jelenjen meg a felirat
-		if (!$('.relatedWrapper').children().length) {
-			$(".relatedTitle").hide();
-		} else if ($('.relatedWrapper>.category-tour-date').length && $('.relatedWrapper>.category-release').length) {
-			//Ha van event, akkor az külön sorban jelenjen meg
-			$('#contentWrapper>article').append('<h2 class="relatedTitle">Tour dates</h2>');
-			$('#contentWrapper>article').append('<div class="relatedWrapper tour-date-wrapper">');
-			$('.relatedWrapper>.category-tour-date').each(function () {
-				if ($(this).hasClass('category-tour-date')) {
-					$(this).appendTo('.tour-date-wrapper')
-				}
-			})
-
-		} else if ($('.relatedWrapper>.category-tour-date').length && !$('.relatedWrapper>.category-release').length) {
-			//ha csak eventek vannak, akkor jó legyen a cím
-			$(".relatedTitle").html('Tour Dates')
-		}
-
-
-
-		//band alatti social linkek
-		// if ($(".sslink").first().length > 0) {
-		// 	var ssH = $(".sslink img").first()[0].getBoundingClientRect().height;
-		// 	console.log(ssH);
-		// 	if (ssH > 50) {
-		// 		$(".sslink img").css("height", "50px");
-		// 	}
-		// }
-
-
-		//többoszloposság beállítása
-		function multiCol(selector, wrapper) {
-			var cww = $(wrapper).width();
-			var an = 0;
-			var colNum;
-
-			if (pw < 768) {
-				colNum = 2;
-			} else if (pw >= 768) {
-				colNum = 4;
-
-				$(wrapper + " article").each(function () {
-					an++;
-				})
-
-				var anm = an / 4 - Math.floor(an / 4)
-				var dn = 4 - (anm / 0.25)
-
-				if (dn > 0 && an > 0) {
-					for (var i = 0; i < dn; i++) {
-						$(wrapper).append('<article class="dummy"></article>')
-					}
-				}
-			}
-			var arw = (cww - (5 * (colNum - 1))) / colNum
-			var arwF = Math.floor(arw);
-			if (arw != arwF) {
-				arw = arwF;
-			}
-			$(selector + ' ' + wrapper + " article").css("width", arw);
-			console.log('wrapper width:' + cww + ' col width:' + arw);
-		}
-
-
-		if (postList) {
-			multiCol(".home", "#contentWrapper");
-			multiCol(".archive", "#contentWrapper");
-		}
-		if (!postList) {
-			multiCol('.single', '.relatedWrapper')
-		}
-
-
-
-		//más arhívoknál a cím
-		var arch2;
-		if (postList && !$('body').hasClass("category")) {
-			$(".pagetitle").insertAfter("#header");
-			arch2 = true;
-		}
-
-
-
-
-		//ne takrja ki az oldal tetejét a header
-		var hH = $("header").css("height");
-		if ($("body").hasClass("home")) {
-			$("#aboutWrapper").css("margin-top", hH);
-		} else if (arch2) {
-			$(".pagetitle").css("margin-top", hH);
-		} else {
-			$("#contentWrapper").css("margin-top", hH);
-		}
-
-
-		//betöltés
-		$(window).on("load", function () {
-			$("#loader").hide();
-		});
-
-
-
-
-
-
-
-	});
-
-}(window.jQuery || window.$));
+!function(e){e(document).ready(function(){function t(t,r){var i,s=e(r).width(),n=0
+if(a<768)i=2
+else if(a>=768){i=4,e(r+" article").each(function(){n++})
+var o=n/4-Math.floor(n/4),l=4-o/.25
+if(l>0&&n>0)for(var h=0;h<l;h++)e(r).append('<article class="dummy"></article>')}var d=(s-5*(i-1))/i,c=Math.floor(d)
+d!=c&&(d=c),e(t+" "+r+" article").css("width",d),console.log("wrapper width:"+s+" col width:"+d)}var a=e(document).outerWidth(),r=!1
+e("body").hasClass("home")&&e("header nav .mzk-band").click(function(t){t.preventDefault(),e("html, body").animate({scrollTop:e("#contentWrapper").offset().top-20},400)
+var a=e(this).html().toUpperCase()
+e(this).html(a),r&&(e("header nav").stop().slideUp(),e("#site-title a").addClass("menuHidden"))})
+var i=!1;(e("body").hasClass("home")||e("body").hasClass("archive")&&!e("body").hasClass("category-tour-date"))&&(i=!0)
+var s=window.location.href.split("/"),n=s[s.length-2]
+if(e("header nav li").each(function(){if(e(this).attr("class").split(/\s+/)[0]==="mzk-"+n){var t=e(this).html().toUpperCase()
+e(this).html(t)}}),e("img.aligncenter").parent().css({display:"flex","flex-direction":"column","align-items":"center"}),e("#aboutbox p:last-child>img").each(function(){e(this).wrap("<span></span>")}),e.fn.wrapStart=function(e){var t=this.contents().filter(function(){return 3==this.nodeType}).first(),a=t.text(),r=a.split(" ",e).join(" ")
+t.length&&(t[0].nodeValue=a.slice(r.length),t.before('<h1 class="contactMZK">'+r+"</h1>"))},e("#contentWrapper>.Contact").length&&(e("#contentWrapper>.Contact>h2").hide(),e(".contactTitle").wrapStart(1)),e("body").hasClass("category-tour-date")&&e("body").hasClass("archive")&&!e("#contentWrapper article").length&&e("#contentWrapper").append("<h2>No tour dates</h2>"),e(".theTags a").each(function(){if(e(this).parent(".theTags").hasClass("tn1")){var t=e(this).html().toLowerCase()
+e(this).html(t)}else{e(this).parent(".theTags").addClass("tn1")
+var t=e(this).html().toLowerCase().split(""),a=t[0].toUpperCase()
+t[0]=a
+var r=t.join("")
+e(this).html(r)}}),e("iframe").each(function(){e(this).attr("src").indexOf("youtube")&&e(this).wrap("<div class='ytcontainer'></div>")}),a<768)r=!0,e("header nav").hide(),e("#site-title a").addClass("menuHidden").click(function(t){t.preventDefault(),e(this).hasClass("menuHidden")?(e("header nav").stop().slideDown(),e(this).removeClass("menuHidden")):(e("header nav").stop().slideUp(),e(this).addClass("menuHidden"))}),e("#contentWrapper").click(function(){e("#site-title a").hasClass("menuHidden")||(e("header nav").stop().slideUp(),e("#site-title a").addClass("menuHidden"))})
+else{if(e("#social-box").appendTo(e(header)),e(".theTags a").wrap("<span class='tg'></span>"),e("header nav ul li, .theTags span,#sidebar article header a").each(function(){var t=e(this).outerWidth(),a=1.3
+e(this).hasClass("menu-item")?a=1.1:e(this).hasClass("tg")&&(a=1.05)
+var r=parseInt(t*a)
+e(this).css("width",r)}),e(".archive .articleTitle").each(function(){var t=e(this).outerHeight()+2
+e(this).css("height",t)}),console.log(e("article .singleHeader").outerHeight(),e("article .entry-content").outerHeight(),e("article .relatedWrapper ").outerHeight(),e("#sidebar div").outerHeight()),!i&&e("#sidebar").length&&e("#sidebar .widget").length&&e("article .singleHeader").outerHeight()+e("article .entry-content").outerHeight()+e("article .relatedWrapper").outerHeight()>e("#sidebar div").outerHeight()){var o=e("#sidebar>div").height(),l=e(window).outerHeight(),h=e("#sidebar>div").offset().top+e("#header").outerHeight(),d=!1,c=e("#sidebar h4:first-child").height()
+l<o?e(document).scroll(function(){var t=e(document).scrollTop(),a=h+o-t-l
+a<=0&&!d&&(e("#sidebar>div").css({top:h-t-c,position:"fixed"}),d=!0),a>0&&d&&(e("#sidebar>div").css({top:"0",position:"relative"}),d=!1)}):e("#sidebar>div").css("position","fixed")}e("#sidebar>div a").each(function(){if(e(this).attr("href").split("/")[s.length-2]==n){var t=e(this).html().toUpperCase()
+e(this).html(t)}}),i?e("article img").wrap("<span class='imgWrapper'></span>"):e("body").hasClass("category-tour-date")&&e(".eventThumbnail img").wrap("<span class='imgWrapper'></span>"),a>=480&&!i&&e(".relatedWrapper img").wrap("<span class='imgWrapper'></span>"),e(".articleTitle>h2 a").hover(function(){e(this).closest("article").find(".imgWrapper").addClass("hover")},function(){e(this).closest("article").find(".imgWrapper").removeClass("hover")}),e(".imgWrapper").hover(function(){e(this).closest("article").find(".articleTitle h2 a").css("font-style","italic")},function(){e(this).closest("article").find(".articleTitle h2 a").css("font-style","")})}e(".relatedWrapper").children().length?e(".relatedWrapper>.category-tour-date").length&&e(".relatedWrapper>.category-release").length?(e("#contentWrapper>article").append('<h2 class="relatedTitle">Tour dates</h2>'),e("#contentWrapper>article").append('<div class="relatedWrapper tour-date-wrapper">'),e(".relatedWrapper>.category-tour-date").each(function(){e(this).hasClass("category-tour-date")&&e(this).appendTo(".tour-date-wrapper")})):e(".relatedWrapper>.category-tour-date").length&&!e(".relatedWrapper>.category-release").length&&e(".relatedTitle").html("Tour Dates"):e(".relatedTitle").hide(),i&&(t(".home","#contentWrapper"),t(".archive","#contentWrapper")),i||t(".single",".relatedWrapper")
+var p
+i&&!e("body").hasClass("category")&&(e(".pagetitle").insertAfter("#header"),p=!0)
+var u=e("header").css("height")
+e("body").hasClass("home")?e("#aboutWrapper").css("margin-top",u):p?e(".pagetitle").css("margin-top",u):e("#contentWrapper").css("margin-top",u),e(window).on("load",function(){e("#loader").hide()})})}(window.jQuery||window.$)

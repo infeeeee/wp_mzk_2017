@@ -38,7 +38,9 @@
 					
 					'meta_key' => 'Tour Date',
 					'orderby' => 'meta_value',
-					'order' => 'ASC'
+					'order' => 'ASC',
+					'meta_value'   => date( "Y.m.d." ), // change to how "event date" is stored
+					'meta_compare' => '>'
 						);
 				query_posts( $args );
 			} ?>
@@ -114,6 +116,7 @@
 	<?php else : ?>
 
 		<h2><?php _e('Nothing Found','html5reset'); ?></h2>
+		
 
 	<?php endif; ?>
 
