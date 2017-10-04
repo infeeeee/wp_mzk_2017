@@ -110,12 +110,34 @@
 
 		// Facebook
 		if (true == of_get_option('meta_app_fb_title')) {
-			echo '<meta property="og:title" content="' . of_get_option("meta_app_fb_title") . '" />';
+			if ( is_home() || is_front_page() || is_archive()) {		
+				echo '<meta property="og:title" content="' . of_get_option("meta_app_fb_title") . '" />';
+			} elseif ( is_single() ) {
+				echo '<meta property="og:title" content="' . of_get_option("meta_app_fb_title") . ' - ' . get_the_title($post->ID) . '" />';	
+			}
 			echo '<meta property="og:description" content="' . of_get_option("meta_app_fb_description") . '" />';
-			echo '<meta property="og:url" content="' . of_get_option("meta_app_fb_url") . '" />';
-			echo '<meta property="og:image" content="' . of_get_option("meta_app_fb_image") . '" />';
+			// echo '<meta property="og:url" content="' . of_get_option("meta_app_fb_url") . '" />';
+			// echo '<meta property="og:image" content="' . of_get_option("meta_app_fb_image") . '" />';
 		}
 	?>
+		<meta property="og:type" content="music.album" />
+		<meta property="fb:app_id" content="135343903758351" />
+		
+
+
+	<?php if ( is_home() || is_archive() || is_front_page() ) { ?>
+		<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/icons/logo.png" />
+		<meta property="og:url" content="<?php echo get_home_url(); ?>" />
+	<?php } elseif ( has_post_thumbnail() ) { ?>
+	<meta property="og:image" content="<?php the_post_thumbnail_url() ?>" />
+	<meta property="og:url" content="<?php echo the_permalink(); ?>" />
+	<?php } else {?> 
+
+
+	<meta property="og:image" content="<?php echo get_template_directory_uri(); ?>/icons/logo.png" />
+	<meta property="og:url" content="<?php echo the_permalink(); ?>" />
+	<?php } ?>
+
 
 	<link rel="profile" href="http://gmpg.org/xfn/11" />
 	<link rel="pingback" href="<?php bloginfo('pingback_url'); ?>" />
